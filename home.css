@@ -1,0 +1,214 @@
+
+body {
+font-family: Trebuchet MS, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #00CDAC;
+}
+header {
+background-color: #282c34;
+color: white;
+padding: 10px;
+text-align: center;
+position: fixed; /* Changed to fixed */
+top: 0;
+left: 0; /* Ensure it stretches across */
+width: 100%; /* Ensure it stretches across */
+z-index: 999;
+font-family: Trebuchet MS, sans-serif;
+}
+nav {
+position: fixed; /* Changed to fixed */
+top: 100px; /* Position below the header */
+left: 0;
+width: 100%;
+z-index: 999;
+}
+nav ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+display: flex;
+justify-content: center;
+background-color: #FFBF65;
+}
+nav ul li {
+margin: 0 15px;
+}
+nav ul li a {
+text-decoration: none;
+color: rgb(0, 0, 0);
+font-weight: bold;
+padding: 15px;
+display: block;
+font-size: 20px;
+}
+nav ul li a:hover {
+background-color: #00B0BA;
+font-size: 20px;
+color: #ff6600;
+}
+/* Dropdown Styles */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #ffffff;
+box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+min-width: 160px;
+z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+display: block;
+}
+.dropdown-content a {
+color: black;
+padding: 12px 16px;text-decoration: none;
+display: block;
+}
+/* Keep the ABOUT link active while hovering on the dropdown 
+*/
+.dropdown:hover .dropbtn {
+background-color: #ffffff; 
+color: #ff6600; 
+}
+#drop {
+padding: 20px 10px 15px 5px; /* Top, Right, Bottom, Left */
+}
+#drop h2 {
+text-align: center;
+margin-bottom: 20px;
+margin-top: 0;
+font-size: 50px;
+background: #ff6600;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+#drop p {
+text-align: center;
+}
+section {
+padding: 50px;
+margin: 100px 100px; /* Add top margin to prevent content 
+being hidden behind the fixed header and nav */
+background-color: white;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-bottom: 15px;
+margin-top: 38.5px;
+}
+.section2 {
+padding: 50px;
+background-color: white;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-bottom: 15px;
+margin-top: 100px;
+}
+/* See More Button */
+.see-more-container {
+text-align: center; /* Center the button */
+margin-top: 20px; /* Add some space above */
+}
+.see-more-button {
+display: inline-block;
+padding: 10px 20px;
+background-color: #ff6600; 
+color: white; 
+text-decoration: none; 
+border-radius: 20px;
+font-size: 1.2em; /* Font size */
+transition: background-color 0.3s ease; 
+}
+.see-more-button:hover {
+background-color: #e65c00; /* Darker blue on hover */
+}
+.footer-divider {
+height: 5px; /* Height of the orange line */
+background-color: #ff6600; /* Orange color */
+width: 100%; /* Full width */
+margin: 0;
+}
+footer {
+background-color: #282c34;color: white;
+text-align: center;
+padding: 10px;
+position: relative;
+bottom: 0;
+width: 98.7%;
+}
+.slider {
+width: 100%;
+position: relative; /* Position relative for absolute positioning of 
+text overlay */
+overflow: hidden; /* Hide overflow to keep the slides inside the 
+slider */
+border-radius: 0; /* Rounded corners */
+}
+.slides {
+display: flex; /* Arrange slides in a row */
+transition: transform 0.5s ease; /* Smooth transition for sliding 
+*/
+}
+.slide {
+position: relative; /* Position relative for absolute positioning of 
+text overlay */
+min-width: 100%; /* Each slide takes full width of the slider */
+}
+.slides img {
+width: 100%; /* Make images full width */
+border-radius: 0; /* Rounded corners */
+height: 600px;
+}
+/* Text overlay styling */
+.text-overlay {
+position: absolute; /* Ensure it's positioned relative to the .slide 
+container */
+top: 50%; /* Position it halfway down the slide */
+left: 50%; /* Position it halfway across the slide */
+transform: translate(-50%, -50%); /* Shift it by 50% of its own 
+height and width to truly center it */
+color: white; /* Text color */
+font-size: 32px; /* Font size */
+background: #ff6600;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+padding: 50px; /* Padding around the text */
+border-radius: 5px; /* Optional: Rounded corners */
+text-align: center; /* Center the text within the box */
+}
+#contact {
+display: flex;
+justify-content: space-between;
+margin: 38px auto;
+padding: 50px;
+background-color: #f9f9f9;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+width: 50%;
+max-width: 1200px;
+}
+.contact-content {
+display: flex;
+justify-content: space-between;
+width: 100%;
+}
+.contact-form {
+width: 48%; /* Set width to 48% to create space for the details 
+container */
+display: flex;
+flex-direction: column;
+}
+.contact-form label {
+font-weight: bold;
+margin-bottom: 5px;font-size: 20px;
+font-family: 'Trebuchet MS', sans-serif;
+}
+.contact-form input, .contact-form textarea {
+margin-bottom: 10px;
+padding: 12px;
+border-radius: 20px;
+border: 1px solid #282c34;
+width: 100%; /* Ensure inputs take full width */
+box-sizing: border-box;
+}
+.cont

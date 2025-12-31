@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, 
+initial-scale=1.0">
+ <title>Login & Sign Up Page</title>
+ <link rel="stylesheet" href="login style.css">
+</head>
+<body>
+ <div class="form-container">
+ <h2 id="formTitle">Login</h2>
+ <form id="authForm">
+ <label for="username">Username</label>
+ <input type="text" id="username" required><br>
+ <label for="password">Password</label>
+ <input type="password" id="password" required>
+<!-- Show Password Checkbox (only for Login) -->
+<div class="show-password"
+id="showPasswordContainer">
+<input type="checkbox" id="showPassword" 
+onclick="togglePasswordVisibility()">
+<label for="showPassword">Show Password</label>
+</div>
+<!-- Confirm password field for sign-up form -->
+<label for="confirmPassword" 
+id="confirmPasswordLabel" style="display: 
+none;">Confirm Password</label>
+<input type="password" id="confirmPassword" 
+style="display: none;">
+ 
+<!-- Password match message -->
+<p id="passwordMatchMessage" style="font-size: 14px; 
+color: red; display: none;"></p>
+<button type="button" 
+onclick="handleSubmit()">Login</button>
+<p id="errorMessage"></p>
+<!-- Toggle link to switch between forms -->
+<p id="toggleText">Don't have an account? <a href="#" 
+onclick="toggleForm()">Sign Up</a></p>
+</form></div>
+<!-- Embedded JavaScript -->
+<script>
+ let isLogin = true;
+function toggleForm() {
+ const formTitle = 
+document.getElementById('formTitle');
+ const confirmPassword = 
+document.getElementById('confirmPassword');
+ const confirmPasswordLabel = 
+document.getElementById('confirmPasswordLabel');
+ const submitButton = 
+document.querySelector('button');
+ const toggleText = 
+document.getElementById('toggleText');
+ const showPasswordContainer = 
+document.getElementById('showPasswordContainer');
+<!--Clear form fields when toggling-->
+document.getElementById('authForm').reset();
+document.getElementById('errorMessage').textContent = 
+''; // Clear any error message
+ if (isLogin) {
+ // Switch to Sign-Up form
+ formTitle.textContent = 'Sign Up';
+ confirmPassword.style.display = 'block';
+ confirmPasswordLabel.style.display = 'block';
+ submitButton.textContent = 'Sign Up';
+ toggleText.innerHTML = 'Already have an account? 
+<a href="#" onclick="toggleForm()">Login</a>';
+ showPasswordContainer.style.visibility = 'hidden'; 
+<!--Hide without shifting layout-->
+ isLogin = false;
+ } else {
+<!--Switch to Login form-->
+ formTitle.textContent = 'Login';
+ confirmPassword.style.display = 'none';
+ confirmPasswordLabel.style.display = 'none';
+ submitButton.textContent = 'Login';
+ toggleText.innerHTML = 'Don\'t have an account? 
+<a href="#" onclick="toggleForm()">Sign Up</a>';
+ showPasswordContainer.style.visibility = 'visible'; // 
+Show Show Password checkbox
+ isLogin = true;
+ }
+}
+ function handleSubmit() {
+ const username = 
+document.getElementById('username').value;
+ const password = 
+document.getElementById('password').value;
+ const errorMessage = 
+document.getElementById('errorMessage');
+ if (isLogin) {
+ const storedUsername = 
+localStorage.getItem('username');
+ const storedPassword = 
+localStorage.getItem('password');
+ if (username === storedUsername && password 
+=== storedPassword) {
+ alert('Welcome! Successfully logged in.'); 
+<!--This line triggers the alert-->
+window.location.href = 'index.html'; 
+<!--Redirect to home page if credentials are valid-->
+ } else {
+ errorMessage.textContent = 'Invalid 
+username or password';
+ }
+ } else {
+ const confirmPassword = 
+document.getElementById('confirmPassword').value;
+ if (password !== confirmPassword) {
+ errorMessage.textContent = 'Passwords do 
+not match';
+ } else if (username && password) {
+localStorage.setItem('username', username);
+localStorage.setItem('password', password);
+alert('Account created successfully! You can now log 
+in.');
+document.getElementById('authForm').reset();
+toggleForm(); 
+<!--Switch back to login form after sign-up-->
+ } else {
+errorMessage.textContent = 'Please fill out all fields';
+ }
+ }
+ }
+function togglePasswordVisibility() {
+const passwordField = 
+document.getElementById('password');if (passwordField.type === 'password') {
+ passwordField.type = 'text';
+ } else {
+ passwordField.type = 'password';
+ }
+ } 
+document.getElementById('confirmPassword').addEvent
+Listener('input', checkPasswordMatch);
+ function checkPasswordMatch() {
+ const password = 
+document.getElementById('password').value;
+ const confirmPassword = 
+document.getElementById('confirmPassword').value;
+ const message = 
+document.getElementById('passwordMatchMessage');
+ if (confirmPassword === "") {
+ message.style.display = 'none';
+ } else if (confirmPassword === password) {
+ message.textContent = 'Passwords match';
+ message.style.color = 'green';
+ message.style.display = 'block';
+ } else {
+ message.textContent = 'Passwords do not 
+match';
+ message.style.color = 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initialscale=1.0">
+<title>Home - Personal Website</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Welcome to My Personal Website</h1>
+</header>
+<nav>
+<ul>
+<li><a href="index.html">HOME</a></li>
+<li class="dropdown">
+<a href="#" class="dropbtn">ABOUT</a>
+<div class="dropdown-content">
+<a href="skills.html">Skills I'm good in Planning or Prototyping</a>
+<a href="goals.html">My Goals as a Student</a>
+<a href="funfacts.html">Fun Facts About Me</a>
+</div>
+</li>
+<li><a href="gallery.html">GALLERY</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+<a href="javascript:void(0);" class="logout-button" 
+onclick="confirmLogout()">LOG OUT</a>
+</ul>
+</nav>
+<section id="section2"></section>
+<div class="slider">
+<div class="slides">
+<div class="slide">
+<img src="IMG_20250804_181457.jpg" alt="Image 1">
+<div class="text-overlay"><h1> Welcome to my Website! 
+</h1></div>
+</div>
+<div class="slide">
+<img src="2.png" alt="Image 2">
+<div class="text-overlay"><h1> Text for Image 2 </h1></div>
+</div>
+<div class="slide">
+<img src="3.png" alt="Image 3">
+<div class="text-overlay"><h1> Text for Image 3 </h1></div>
+</div>
+</div>
+</div>
+<section id="drop">
+<h2>Fun Facts About Me</h2>
+<p>Welcome to my Fun Facts About Me! Here, you'll get a 
+glimpse into my passions, interests, and the little quirks that 
+make me who I am. </p>
+<div class="funfact-container">
+<div class="funfact-card">
+<div class="funfact-inner">
+<div class="funfact-front">
+<p>I love to exploring something new.</p>
+</div>
+<div class="funfact-back">
+<p>Im not really good in Programming or like a pro but I little know the function of other programming Language is.</p>
+</div>
+</div>
+</div>
+<div class="funfact-card">
+<div class="funfact-inner">
+<div class="funfact-front">
+</div>
+<div class="funfact-back"><p>I’m on a mission to try every coffee shop in my town!</p>
+</div>
+</div>
+</div>
+<div class="funfact-card">
+<div class="funfact-inner">
+<div class="funfact-front">
+</div>
+<div class="funfact-back">
+<p>My do codes when I want it with listening music and a clear mind to think what Im doing next.</p>
+</div>
+</div>
+</div>
+<div class="funfact-card">
+<div class="funfact-inner">
+<div class="funfact-front">
+<p>Goal Setter! </p>
+</div>
+<div class="funfact-back">
+<p>I keep a list of 100 things to achieve this year, from tiny 
+wins to big dreams!</p>
+</div>
+</div>
+</div>
+</div>
+<!-- See More Button -->
+<div class="see-more-container">
+<a href="funfacts.html" class="see-more-button">See More 
+Funfacts</a>
+</div>
+</section>
+<div class="container">
+<div class="image-section">
+<img src="IMG_20190512_104839.jpg" alt="Alfred's Image">
+</div>
+<div class="quote-section">
+<h1>Hi, I'm Edylene!</h1>
+<p>I'm a BSIT student, still learning and expanding my knowledge. I'm exploring the languages they taught me, and even though coding wasn't my initial passion, 
+  I'm finding myself more interested in it now. 
+  I have a strong desire to master this course and see where it takes me. Maybe, one day, coding will become my hobby,
+  and I'll be able to create systems, websites, and applications. There's nothing wrong with dreaming big, and I'm excited to see what the future holds.</p>
+<blockquote>
+"Always look at the brigthside of life"
+</blockquote>
+</div>
+</div>
+<footer>
+<p>&copy; 2024 Edylene. All rights reserved.</p>
+</footer>
+<div class="footer-divider"></div> <!-- Orange line -->
+<!-- Lightbox Container -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+<span class="close" onclick="event.stopPropagation(); 
+closeLightbox()">&times;</span>
+<img class="lightbox-content" id="lightboxImage" src="">
+</div>
+<!-- Embedded JavaScript -->
+<script>
+const slides = document.querySelector('.slides');
+let index = 0;
+function showNextSlide() {
+index = (index + 1) % 3;
+slides.style.transform = 'translateX(' + (-index * 100) + '%)';
+}
+setInterval(showNextSlide, 3000); // Change slide every 3 
+seconds
+function openLightbox(imageSrc) {
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = 
+document.getElementById('lightboxImage');
+lightboxImage.src = imageSrc;
+lightbox.style.display = 'block';// Hide header and nav
+document.querySelector('header').style.display = 'none'; 
+// Hides the header
+document.querySelector('nav').style.display = 'none'; 
+// Hides the nav
+}
+function closeLightbox() {
+const lightbox = document.getElementById('lightbox');
+lightbox.style.display = 'none';
+// Show header and nav
+document.querySelector('header').style.display = 'block'; 
+// Shows the header
+document.querySelector('nav').style.display = 'flex'; // Shows 
+the nav
+}
+document.addEventListener('DOMContentLoaded', function () {
+const logoutButton = document.querySelector('.logout-button 
+.dropbtn');
+const logoutDropdown = document.querySelector('.logoutdropdown');
+// Toggle dropdown visibility on button click
+logoutButton.addEventListener('click', function () {
+logoutDropdown.styl
